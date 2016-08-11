@@ -31,47 +31,54 @@ db = SQLAlchemy()
 #         return "<User user_id=%s email=%s>" % (self.user_id, self.email)
 
 class City(db.Model):
-    """User of ratings website."""
+    """Cities a user can visit."""
 
     __tablename__ = "cities"
 
-    city_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    destination = db.Column(db.String(64), nullable=True)
+    city_id = db.Column(db.String(64), autoincrement=True, primary_key=True)
+    destination = db.Column(db.String(64), nullable=True )
     departure_date = db.Column(db.String(64), nullable=True)
     return_date = db.Column(db.String(64), nullable=True)
+    lowest_predicted_fares=db.Column(db.String(64), nullable=True)
+    lowest_fare=db.Column(db.String(64), nullable=True)
     recommendation = db.Column(db.String(15), nullable=True)
 
     def __repr__(self):
         """Provide helpful representation when printed."""
 
-        return "You should %s to book tickets to %s" % (self.recommendation, self.destination)
+        return "You should %s to book tickets to %s. The lowest predicted fare is $%s, and the lowest available fare is $%s" % (self.recommendation, self.destination, self.lowest_predicted_fares, self.lowest_fare)
+
 
 
 
 # replace to events 
-# class Rating(db.Model):
-#     """Rating of a movie by a user."""
+class Event(db.Model):
+#     """Event info in cities."""
 
-#     __tablename__ = "ratings"
+    __tablename__ = "events"
 
-#     rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-#     movie_id = db.Column(db.Integer, db.ForeignKey('movies.movie_id'))
-#     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-#     score = db.Column(db.Integer)
+    city_id = db.Column(db.String(64), db.ForeignKey('cities.city_id'))
+    event_id = db.Column(db.String(64), primary_key=True )
+    destination = db.Column(db.String(64),nullable=True)
+    event_date = db.Column(db.String(64), nullable=True)
+    event_time = db.Column(db.String(64), nullable=True)   
+    event_name = db.Column(db.String(64), nullable=True)   
+    event_location = db.Column(db.String(64), nullable=True)   
+    event_cost = db.Column(db.String(64), nullable=True)   
+    event_theme = db.Column(db.String(64), nullable=True)       
 
-#     # Define relationship to user
-#     user = db.relationship("User",
-#                            backref=db.backref("ratings", order_by=rating_id))
 
-#     # Define relationship to movie
-#     movie = db.relationship("Movie",
-#                             backref=db.backref("ratings", order_by=rating_id))
+#     # Defines relationship to cities
+    city = db.relationship("City",
+                           backref=db.backref("events", order_by=event_id))
 
-#     def __repr__(self):
-#         """Provide helpful representation when printed."""
 
-#         return "<Rating rating_id=%s movie_id=%s user_id=%s score=%s>" % (
-#             self.rating_id, self.movie_id, self.user_id, self.score)
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<location %s name %s>" % (
+            self.destination, self.event_name)
 
 
 ##############################################################################
@@ -92,8 +99,10 @@ if __name__ == "__main__":
     # you in a state of being able to work with the database directly.
     import os
     os.system("dropdb cities")
+    os.system("dropdb events")
     print 'droppping db'
     os.system("createdb cities")
+    os.system("createdb events")
     print 'creatdb'
     from server import app
     connect_to_db(app)

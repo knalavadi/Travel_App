@@ -36,28 +36,34 @@ def city():
     destination = request.form['destination']
     print "DESTINATION ", destination
 
-    destination = City.query.filter_by(destination=destination).all()
-    flash(destination)
+    city = City.query.filter_by(destination=destination).first()
+    flash(city)
 
-
-    # recommendation = City.query.filter_by(destination=destination).first()
-    # flash("you should %s" % recommendation)
-
-
-
-    # city = City.query.filter(City.destination == destination).first()
-    # recommendation = City.query.filter(City.recommendation == recommendation).first()
-
-    return render_template("city_page.html", destination=destination)
+    return render_template("city_page.html", city=city)
 
 
 
 
 # # ==============================city event page===========
-# @app.route('/city_event_page')
-# def city_page():
+@app.route('/city_event_page/<destination>', methods=['GET'])
+def city_page(destination):
 
-#   return render_template("city_event_page.html")
+    print destination
+    destination = City.query.filter_by(destination=destination).first()
+    print destination.events
+    print "DESTINATION event page", destination 
+    flash(destination)
+    # destination = City.query.filter_by(destination=destination).all()
+
+    return render_template("city_event_page.html", events=destination.events)
+
+
+
+
+
+
+
+
 
 
 # ======================login and logout for user ====================
