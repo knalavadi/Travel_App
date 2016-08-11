@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event Page</title>
+</head>
+<body>
+
+{% for event in events %}
+
+    <div>
+        <h3 id="eventName">{{ event.event_name }}</h3>
+        <p>{{ event.event_date }}</p> <p>{{ event.event_time }}</p>
+        <p>{{ event.event_location }}</p> <p>{{ event.event_cost }}</p> <p>{{ event.event_theme }}</p>
+    </div>
+
+{% endfor %}
+{% endblock %}
+</body>
+</html>

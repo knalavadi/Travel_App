@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="homepage-block">
+        <h1 id="homepage-title">Travel App</h1>
+    </div>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel app</title>
+</head>
+<body>
+<p>Starting location san francisco, california </p>
+<form action='/city_page' method='POST'>
+
+  <input list="destination" name="destination">
+      <datalist id="destination">
+            <option value="Atlanta" name="destination">
+            <option value="Austin" name="destination">
+            <option value="Baltimore" name="destination">
+            <option value="Boston" name="destination">
+            <option value="Charleston" name="destination">
+            <option value="Charlotte" name="destination">
+            <option value="Chicago" name="destination">
+            <option value="Cleveland" name="destination">
+            <option value="Dallas" name="destination">
+            <option value="Denver" name="destination">
+            <option value="Honolulu" name="destination">
+            <option value="Houston" name="destination">  
+            <option value="Las Vegas" name="destination"> 
+            <option value="Los Angeles" name="destination">
+            <option value="Miami" name="destination">
+            <option value="New Orleans" name="destination">
+            <option value="New York" name="destination">
+            <option value="Philadelphia" name="destination">
+            <option value="Phoenix" name="destination">
+            <option value="Portland" name="destination">
+            <option value="San Antonio" name="destination">
+            <option value="Santa Barbara" name="destination">
+            <option value="San Diego" name="destination">            
+            <option value="Seattle" name="destination">
+            <option value="Washington DC" name="destination">
+      </datalist>
+    <p>Sept</p> 
+  <input type="submit">
+
+
+</form>
+        </div>
+        </div>
+
+    </form>
+
+{% endblock %}
+</body>
+</html>

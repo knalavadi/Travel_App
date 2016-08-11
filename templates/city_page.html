@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>City Page</title>
+</head>
+<body>
+
+<br><p> forcast for ticket prices here </p><br><br><br><br><br>
+<form action='/city_event_page' method='POST'>
+<a href="/city_event_page/{{city.destination}}">click here to see events </a>
+</form>
+<div><!-- recomendation will go here --></div>
+
+{% endblock %}
+</body>
+</html>
