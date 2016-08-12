@@ -32,7 +32,7 @@ def index():
 
 @app.route('/city_page', methods=['GET', 'POST'])
 def city():
-    # location = get key from get request
+    # destination = get key from get request
     destination = request.form['destination']
     print "DESTINATION ", destination
 

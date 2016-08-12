@@ -9,49 +9,81 @@
 <html>
 <head>
     <title>Travel app</title>
+<style>
+#homepageVideo{
+    margin:center;
+    align:center;
+}
+
+#homepageCitySearch{
+    margin-left: 3%;
+
+}
+
+#disabledInput{
+    width: 15%;
+}
+
+#homepageSubmit {
+    width: 10%;
+}
+
+
+
+</style>
 </head>
 <body>
-<p>Starting location san francisco, california </p>
-<form action='/city_page' method='POST'>
+<p>Starting location san francisco, california</p>
 
-  <input list="destination" name="destination">
-      <datalist id="destination">
-            <option value="Atlanta" name="destination">
-            <option value="Austin" name="destination">
-            <option value="Baltimore" name="destination">
-            <option value="Boston" name="destination">
-            <option value="Charleston" name="destination">
-            <option value="Charlotte" name="destination">
-            <option value="Chicago" name="destination">
-            <option value="Cleveland" name="destination">
-            <option value="Dallas" name="destination">
-            <option value="Denver" name="destination">
-            <option value="Honolulu" name="destination">
-            <option value="Houston" name="destination">  
-            <option value="Las Vegas" name="destination"> 
-            <option value="Los Angeles" name="destination">
-            <option value="Miami" name="destination">
-            <option value="New Orleans" name="destination">
-            <option value="New York" name="destination">
-            <option value="Philadelphia" name="destination">
-            <option value="Phoenix" name="destination">
-            <option value="Portland" name="destination">
-            <option value="San Antonio" name="destination">
-            <option value="Santa Barbara" name="destination">
-            <option value="San Diego" name="destination">            
-            <option value="Seattle" name="destination">
-            <option value="Washington DC" name="destination">
-      </datalist>
-    <p>Sept</p> 
-  <input type="submit">
+<object><iframe src="https://player.vimeo.com/video/29070512?autoplay=1&loop=1&automute=0" id="homepageVideo" width="640" height="360" frameborder="0"></iframe></object>
+
+
+
+<form action='/city_page' method='POST' class="form-inline">
+    <div class="form-group" id="homepageCitySearch">
+    <label for="destination" id="whereTo">Where to?:</label> <input list="destination" name="destination" placeholder="city name">
+          <datalist id="destination">
+                <option value="Atlanta" name="destination">
+                <option value="Austin" name="destination">
+                <option value="Baltimore" name="destination">
+                <option value="Boston" name="destination">
+                <option value="Charleston" name="destination">
+                <option value="Charlotte" name="destination">
+                <option value="Chicago" name="destination">
+                <option value="Cleveland" name="destination">
+                <option value="Dallas" name="destination">
+                <option value="Denver" name="destination">
+                <option value="Honolulu" name="destination">
+                <option value="Houston" name="destination">  
+                <option value="Las Vegas" name="destination"> 
+                <option value="Los Angeles" name="destination">
+                <option value="Miami" name="destination">
+                <option value="New Orleans" name="destination">
+                <option value="New York" name="destination">
+                <option value="Philadelphia" name="destination">
+                <option value="Phoenix" name="destination">
+                <option value="Portland" name="destination">
+                <option value="San Antonio" name="destination">
+                <option value="Santa Barbara" name="destination">
+                <option value="San Diego" name="destination">            
+                <option value="Seattle" name="destination">
+                <option value="Washington DC" name="destination">
+          </datalist>
+    </div>
+    <input class="form-group" class="form-control" id="disabledInput" type="text" placeholder="Sept 20 - Sept 30, 2016" disabled>
+
+    <input type="submit"  class="btn btn-default">
 
 
 </form>
-        </div>
-        </div>
 
-    </form>
+
+   
+
+
 
 {% endblock %}
+
+<p><a href="https://vimeo.com/29070512">Frankfurt Airport and downtown tilt shift - time lapse</a> from <a href="https://vimeo.com/turbo">Ross Johnson</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 </body>
 </html>
