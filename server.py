@@ -53,7 +53,6 @@ def city_page(destination):
     print destination.events
     print "DESTINATION event page", destination 
     flash(destination)
-    # destination = City.query.filter_by(destination=destination).all()
 
     return render_template("city_event_page.html", events=destination.events)
 

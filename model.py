@@ -42,6 +42,9 @@ class City(db.Model):
     lowest_predicted_fares=db.Column(db.String(64), nullable=True)
     lowest_fare=db.Column(db.String(64), nullable=True)
     recommendation = db.Column(db.String(15), nullable=True)
+    coords = db.Column(db.String(64), nullable=True)
+    # lat = db.Column(db.String(64), nullable=True)
+    # lng = db.Column(db.String(64), nullable=True)
 
     def __repr__(self):
         """Provide helpful representation when printed."""

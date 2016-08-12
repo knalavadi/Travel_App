@@ -10,14 +10,14 @@
 <head>
     <title>Travel app</title>
 <style>
-#homepageVideo{
-    margin:center;
-    align:center;
+
+object{
+    position:relative;
+    left:25%;
 }
 
-#homepageCitySearch{
-    margin-left: 3%;
-
+form {
+    text-align: center;
 }
 
 #disabledInput{
@@ -39,8 +39,8 @@
 
 
 
-<form action='/city_page' method='POST' class="form-inline">
-    <div class="form-group" id="homepageCitySearch">
+<form action='/city_page' method='POST' class="form-inline" class=homeCitySearch>
+    <div class="form-group">
     <label for="destination" id="whereTo">Where to?:</label> <input list="destination" name="destination" placeholder="city name">
           <datalist id="destination">
                 <option value="Atlanta" name="destination">
@@ -71,10 +71,7 @@
           </datalist>
     </div>
     <input class="form-group" class="form-control" id="disabledInput" type="text" placeholder="Sept 20 - Sept 30, 2016" disabled>
-
     <input type="submit"  class="btn btn-default">
-
-
 </form>
 
 
@@ -84,6 +81,7 @@
 
 {% endblock %}
 
+<!-- vimeo credit  -->
 <p><a href="https://vimeo.com/29070512">Frankfurt Airport and downtown tilt shift - time lapse</a> from <a href="https://vimeo.com/turbo">Ross Johnson</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 </body>
 </html>

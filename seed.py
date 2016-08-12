@@ -15,8 +15,10 @@ def load_cities():
     for row in open("seed_data/u.flight_data"):
         row = row.rstrip()
         print row.split("|")        
+
+        # add : lat, lng 
         
-        city_id, origin_location, destination, departure_date, return_date, highest_predicted_fares, currency_code, lowest_predicted_fares, recommendation, lowest_fare = row.split("|")
+        city_id, origin_location, destination, departure_date, return_date, highest_predicted_fares, currency_code, lowest_predicted_fares, recommendation, lowest_fare, coords = row.split("|")
 
         city = City(city_id=city_id,
                     destination=destination,
@@ -25,6 +27,9 @@ def load_cities():
                     lowest_predicted_fares=lowest_predicted_fares,
                     lowest_fare=lowest_fare,
                     recommendation=recommendation,
+                    coords = coords
+                    # lat=lat,
+                    # lng=lng
                     )
 
         # We need to add to the session or it won't ever be stored
