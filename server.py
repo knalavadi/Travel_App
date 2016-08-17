@@ -37,6 +37,7 @@ def city():
     print "DESTINATION ", destination
 
     city = City.query.filter_by(destination=destination).first()
+    print city
     flash(city)
 
     return render_template("city_page.html", city=city)
@@ -48,13 +49,14 @@ def city():
 @app.route('/city_event_page/<destination>', methods=['GET'])
 def city_page(destination):
 
-    print destination
+    # print destination
     destination = City.query.filter_by(destination=destination).first()
-    print destination.events
-    print "DESTINATION event page", destination 
+    print destination
+    # print destination.events
+    # print "DESTINATION event page", destination 
     flash(destination)
 
-    return render_template("city_event_page.html", events=destination.events)
+    return render_template("city_event_page.html", events=destination.events, city_event_destination=destination)
 
 
 

@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div id="homepage-block">
-        <h1 id="homepage-title">Travel App</h1>
-    </div>
 
 
 <!DOCTYPE html>
@@ -10,6 +7,9 @@
 <head>
     <title>Travel app</title>
 <style>
+#homepage-block{
+    margin-left: 5%;
+}
 
 object{
     position:relative;
@@ -33,15 +33,20 @@ form {
 </style>
 </head>
 <body>
-<p>Starting location san francisco, california</p>
-
-<object><iframe src="https://player.vimeo.com/video/29070512?autoplay=1&loop=1&automute=0" id="homepageVideo" width="640" height="360" frameborder="0"></iframe></object>
+    <div id="homepage-block">
+        <h1 id="homepage-title">Travel App</h1>
+    <p style="font-style: italic;">discover destinations from san francisco, california</p>
+    <br>
+    </div>
+    <br>
+<!-- <img src="http://il1.picdn.net/shutterstock/videos/1180972/thumb/1.jpg" alt="design" style="width:50%;">
+ --><object><iframe src="https://player.vimeo.com/video/29070512?autoplay=1&loop=1&automute=0" id="homepageVideo" width="640" height="360" frameborder="0"></iframe></object><br><br>
 
 
 
 <form action='/city_page' method='POST' class="form-inline" class=homeCitySearch>
     <div class="form-group">
-    <label for="destination" id="whereTo">Where to?:</label> <input list="destination" name="destination" placeholder="city name">
+    <label for="destination" id="whereTo">Where to?:</label> <input list="destination" class="form-group" class="form-control" name="destination" placeholder="city name">
           <datalist id="destination">
                 <option value="Atlanta" name="destination">
                 <option value="Austin" name="destination">
@@ -74,8 +79,6 @@ form {
     <input type="submit"  class="btn btn-default">
 </form>
 
-
-   
 
 
 

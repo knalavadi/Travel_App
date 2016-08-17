@@ -6,9 +6,21 @@
 <head>
 	<title>Event Page</title>
     <script type="text/javascript"<a onclick="javascript:window.location='mailto:?subject=Message from '+document.getElementById('address').value+'&body='+document.getElementById('message').value">Submit</a></script>
+    <style type="text/css">
+
+        #selectedCity{
+        margin-left: 5%;
+        font-size: 1.4em;
+      }
+
+
+    </style>
 </head>
 <body>
 
+    {% if city_event_destination %}
+        <p id="selectedCity">{{ city_event_destination.destination }} events for you</p><br>
+    {% endif %}
 <!-- #add eventbrite URLS -->
     {% for event in events %}
     <div class="row" style="margin:5%">

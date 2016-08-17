@@ -6,17 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Travel App</title>
-
-    <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"
           rel="stylesheet">
+<style>
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 110%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    font-color:black;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#aboutContentTitle{
+  font-color:black;
+}
+
+#aboutContent{
+  font-color:pink;
+}
+
+
+
+</style>
 
 </head>
 <body>
 <nav class="navbar navbar-inverse" style="margin-bottom: 0px">
     <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed"
                     data-toggle="collapse"
@@ -30,35 +78,63 @@
                 <span class="glyphicon glyphicon-globe"></span>
                 Travel app
             </a>
+            <a>
+              <!-- <button type="button" class="btn btn-default navbar-btn" id="aboutusBtn">About</button> -->
+              <button type="button" class="btn btn-default navbar-btn" id="aboutusBtn">About Us</button>
+
+             <!--  <button type="button" class="btn btn-default navbar-btn" id="aboutusBtn">About</button> -->
+              <div id="aboutModal" class="modal">
+                <div class="modal-content">
+                <span class="close">×</span>
+                <p id="aboutContentTitle">About Us</p>
+                <p id="aboutContent">About Us</p>
+              </div>
+            </a>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse"
-             id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              {% if "user_id" in session %}
-                  <li><a href="/users/{{ session['user_id'] }}">Profile</a></li>
-                  <li><a href="/logout">Logout</a></li>
-              {% else %}
-                  <li><a href="/register">Register</a></li>
-                  <li><a href="/login">Login</a></li>
-              {% endif %}
-
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+          </div>
     </div>
-    <!-- /.container-fluid -->
 </nav>
 <div id="extending">
     {% for flash in get_flashed_messages() %}
-      <div class="alert alert-info" style="width:90%; margin:2% auto; text-align:center;">{{ flash }}</div>
+      <div class="alert alert-info" style="width:90%; margin:2% auto; text-align:center;font-size:1.2em;">{{ flash }}</div>
     {% endfor %}
 {% block content %}
 {% endblock %}
 </div>
+
+<!-- ================================================== -->
+<script>
+// Get the modal
+var modal = document.getElementById('aboutModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("aboutusBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+</script>
+
+<!-- ================================================== -->
+
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

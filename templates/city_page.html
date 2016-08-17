@@ -3,18 +3,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 	<title>City Page</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style type="text/css">
+      #selectedCity{
+        margin-left: 5%;
+        font-size: 1.4em;
+      }
+      #usMap{
+
+      }
+
+      #eventButton{
+        font-size: 1.2em;
+      }
+
+    </style>
 </head>
-<body>
+    <body>
+        {% if city %}
+        <p id="selectedCity">See how {{city.destination }} compares to other popular destintations</p>
+        <br>
+        <div id="usMap"></div>
+        <br>
+        <script>
 
-<br><p> forcast for ticket prices here </p><br><br><br><br><br>
-<form action='/city_event_page' method='POST'>
-<a href="/city_event_page/{{city.destination}}"><button type="button" class="btn btn-default btn-lg btn-block">click here to see events </button>
-</a>
-</form>
-<div><!-- recomendation will go here --></div>
 
-{% endblock %}
-</body>
+    Plotly.d3.csv('https://raw.githubusercontent.com/knalavadi/Travel_App/master/templates/flight_info.csv', function(err, rows){
+      function unpack(rows, key) {
+          return rows.map(function(row) { return row[key]; });
+      }
+
+    var cityName = unpack(rows, 'name'),
+        cityFare = unpack(rows, 'fare'),
+        cityLat = unpack(rows, 'lat'),
+        cityLon = unpack(rows, 'long'),
+        color = [,"rgb(255,65,54)","rgb(133,20,75)","rgb(255,133,27)","lightgrey"],
+        citySize = [],
+        hoverText = [],
+        scale = 20;
+
+    for ( var i = 0 ; i < cityFare.length; i++) {
+      var currentSize = cityFare[i] / scale;
+      var currentText = cityName[i] + "<br>Lowest Fare: $" + cityFare[i];
+      citySize.push(currentSize);
+      hoverText.push(currentText);
+    }
+
+
+    var data = [{
+        type: 'scattergeo',
+        locationmode: 'USA-states',
+        lat: cityLat,
+        lon: cityLon,
+        text: hoverText,
+        hoverinfo: 'text',
+        marker: {
+            size: citySize,
+            line: {
+                color: 'black',
+                width: 2
+            },
+        }
+    }];
+
+    var layout = {
+        title: 'Flight Fares out of SFO',
+        showlegend: false,
+        geo: {
+          scope: 'usa',
+          projection: {
+            type: 'albers usa'
+          },
+          showland: true,
+          landcolor: 'rgb(217, 217, 217)',
+          subunitwidth: 1.5,
+          countrywidth: 1.5,
+          subunitcolor: 'rgb(255,255,255)',
+          countrycolor: 'rgb(255,255,255)'
+        },
+    };
+
+    Plotly.plot(usMap, data, layout, {showLink: false});
+    // debugger;
+});
+        </script>
+        <form action='/city_event_page' method='POST'>
+            <a href="/city_event_page/{{city.destination}}"><button type="button" class="btn btn-default btn-lg btn-block" id="eventButton">see events in {{ city.destination }}</button>
+            {% endif %}
+            </a>
+        </form>
+    {% endblock %}
+    </body>
 </html>
