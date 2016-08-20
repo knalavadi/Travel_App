@@ -36,13 +36,15 @@ class City(db.Model):
     __tablename__ = "cities"
 
     city_id = db.Column(db.String(64), autoincrement=True, primary_key=True)
+    origin_airport = db.Column(db.String(64), nullable=True )
+    destination_airport = db.Column(db.String(64), nullable=True )
     destination = db.Column(db.String(64), nullable=True )
     departure_date = db.Column(db.String(64), nullable=True)
     return_date = db.Column(db.String(64), nullable=True)
     lowest_predicted_fares=db.Column(db.String(64), nullable=True)
     lowest_fare=db.Column(db.String(64), nullable=True)
     recommendation = db.Column(db.String(15), nullable=True)
-    coords = db.Column(db.String(64), nullable=True)
+    destination_info = db.Column(db.String(5000), nullable=True )
     # lat = db.Column(db.String(64), nullable=True)
     # lng = db.Column(db.String(64), nullable=True)
 

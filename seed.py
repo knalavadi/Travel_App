@@ -16,17 +16,18 @@ def load_cities():
         row = row.rstrip()
         print row.split("|")        
 
-        # add : lat, lng 
-        
-        city_id, origin_location, destination, departure_date, return_date, highest_predicted_fares, currency_code, lowest_predicted_fares, recommendation, lowest_fare  = row.split("|")
+        city_id, origin_airport, destination_airport, destination, departure_date, return_date, highest_predicted_fares, currency_code, lowest_predicted_fares, recommendation, lowest_fare, destination_info  = row.split("|")
 
         city = City(city_id=city_id,
+                    origin_airport=origin_airport,
+                    destination_airport=destination_airport,
                     destination=destination,
                     departure_date=departure_date,
                     return_date=return_date,
                     lowest_predicted_fares=lowest_predicted_fares,
                     lowest_fare=lowest_fare,
                     recommendation=recommendation,
+                    destination_info=destination_info,
                     )
 
         # We need to add to the session or it won't ever be stored
