@@ -10,32 +10,36 @@
 
         #selectedCity{
         margin-left: 5%;
-        font-size: 1.4em;
+        font-size: 1.5em;
       }
 
 
     </style>
 </head>
 <body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+            {% if city_event_destination %}
+                <p id="selectedCity">{{ city_event_destination.destination }} events for you</p><br>
+            {% endif %}
 
-    {% if city_event_destination %}
-        <p id="selectedCity">{{ city_event_destination.destination }} events for you</p><br>
-    {% endif %}
-<!-- #add eventbrite URLS -->
-    {% for event in events %}
-    <div class="row" style="margin:5%">
-        <div class="col-xs-6 col-md-4"><img src="pic_mountain.jpg" alt="Mountain View" style="width:300px;"></div>
-            <div class="col-xs-12 col-sm-6 col-md-8">
-                <h3 id="eventName">{{ event.event_name }} </h3><a href="mailto:?subject={{event.event_name}}&body=Check%20out%20the%20{{event.event_name}}%20at%20the%20{{event.event_location}}%20on%20{{ event.event_date }}%20at%20{{ event.event_time }}" class="button">Email this event</a>
-                <p>{{ event.event_date }}</p>
-                <p>{{ event.event_time }}</p>
-                <p>{{ event.event_location }}</p> 
-                <p>{{ event.event_cost }}</p> 
-                <p>{{ event.event_theme }}</p>
-            </div>    
-    </div> 
-    {% endfor %}
-{% endblock %}
+            {% for event in events %}
+            <div class="row" style="margin:5%">
+                    <div class="col-xs-12 col-sm-6 col-md-8">
+                        <h3 id="eventName">{{ event.event_name }} </h3><a href="mailto:?subject={{event.event_name}}&body=Check%20out%20the%20{{event.event_name}}%20at%20the%20{{event.event_location}}%20on%20{{ event.event_date }}%20at%20{{ event.event_time }}" class="button">Email this event</a>
+                        <p>{{ event.event_date }}</p>
+                        <p>{{ event.event_time }}</p>
+                        <p>{{ event.event_location }}</p> 
+                        <p>{{ event.event_cost }}</p> 
+                        <p>{{ event.event_theme }}</p>
+                    </div>    
+            </div> 
+            {% endfor %}
+        {% endblock %}
+    </div>
+  </div>
+</div>        
 
 
 </script>

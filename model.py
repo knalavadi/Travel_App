@@ -14,22 +14,6 @@ db = SQLAlchemy()
 ##############################################################################
 # Model definitions
 
-# class User(db.Model):
-#     """User of ratings website."""
-
-#     __tablename__ = "users"
-
-#     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-#     email = db.Column(db.String(64), nullable=True)
-#     password = db.Column(db.String(64), nullable=True)
-#     age = db.Column(db.Integer, nullable=True)
-#     zipcode = db.Column(db.String(15), nullable=True)
-
-#     def __repr__(self):
-#         """Provide helpful representation when printed."""
-
-#         return "<User user_id=%s email=%s>" % (self.user_id, self.email)
-
 class City(db.Model):
     """Cities a user can visit."""
 
@@ -45,8 +29,7 @@ class City(db.Model):
     lowest_fare=db.Column(db.String(64), nullable=True)
     recommendation = db.Column(db.String(15), nullable=True)
     destination_info = db.Column(db.String(5000), nullable=True )
-    # lat = db.Column(db.String(64), nullable=True)
-    # lng = db.Column(db.String(64), nullable=True)
+
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -100,7 +83,7 @@ def connect_to_db(app):
 
 
 if __name__ == "__main__":
-    # As a convenience, if we run this module interactively, it will leave
+    # if we run this module interactively, it will leave
     # you in a state of being able to work with the database directly.
     import os
     os.system("dropdb cities")
