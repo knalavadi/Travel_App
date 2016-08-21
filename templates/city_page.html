@@ -5,37 +5,47 @@
 <head>
 	<title>City Page</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <style type="text/css">
       #selectedCity{
         margin-left: 5%;
-        font-size: 1.3em;
+        margin-bottom: 2%;
       }
       #eventButton{
         font-size: 1.1em;
       }
 
+      #myDiv {
+          background-color: #00FFFF;
+          margin-top: 2%;
+          margin-bottom: 2%;
+          width: 710px;
+          height: 450px;
+          overflow: scroll;
+      }
+     
     </style>
 </head>
     <body>
         {% if city %}
-        <p id="selectedCity">See how {{city.destination }} prices compare to other popular destintations out of SFO</p>
+        <h4 id="selectedCity">See how {{city.destination }} prices compare to other popular destintations out of SFO</h4>
         <br>
 <div class="container">
   <div class="row">
     <div class="col-sm-8">
       <ul class="nav nav-tabs" id="myTab">
-        <li class="active"><a data-target="#home" data-toggle="tab">Home</a></li>
-        <li><a data-target="#profile" data-toggle="tab">Profile</a></li>
-<!--         <li><a data-target="#messages" data-toggle="tab">Messages</a></li>
-        <li><a data-target="#settings" data-toggle="tab">Settings</a></li> -->
+        <li class="active"><a data-target="#home" data-toggle="tab">Predicted insights</a></li>
+        <li><a data-target="#profile" data-toggle="tab">Lowest Cost Comparison</a></li>
       </ul>
 
       <div class="tab-content">
-        <div class="tab-pane active" id="home">Home</div>
+        <div class="tab-pane active" id="home">
+          <div class="container">
+            <a href="#" data-toggle="tooltip" title="Predicted seasonality is based on comparatively low, medium and high traffic for the given destination relative to other times of the year">More Info</a>
+
+          </div><div id="myDiv"">
+        </div></div>
         <div class="tab-pane" id="profile"><div id="usMap"></div></div>
-<!--         <div class="tab-pane" id="messages"></div>
-        <div class="tab-pane" id="settings">Settings</div> -->
       </div>
 
 
@@ -52,9 +62,96 @@
   </div>
 </div>
         <br>
-        <script>
+<script>
 
 
+var city = ['LA', 'Honolulu', 'Denver', 'Seattle', 'New York', 'Phoenix', 'Miami', 'Portland', 'Las Vegas', 'Chicago', 'San Diego', 'San Antonio', 'Santa Barbara', 'New Orleans', 'Atlanta', 'Charleston', 'Charlotte', 'Washingtion DC', 'Philadelphia', 'Cleveland', 'Baltimore', 'Dallas', 'Austin', 'Boston', 'Houston'];
+
+var estLowestFlight = ['105', '379', '97', '113', '301', '28', '199', '98', '59', '44', '127', '253', '148', '273', '215', '350', '377', '300', '293', '242', '342', '100', '216', '275', '98'];
+
+var seasonality = ['210', '10', '400', '400', '400', '210', '10', '400', '210', '400', '400', '210','210', '210', '210', '400', '210', '400', '400', '400', '400', '10', '400', '400', '210'];
+
+var trace1 = {
+  type: 'scatter',
+  x: estLowestFlight,
+  y: city,
+  mode: 'markers',
+  name: 'Estimated lowest fare',
+  marker: {
+    color: '(91,192,222)',
+    line: {
+      color: '(91,192,222)',
+      width: 1,
+    },
+    symbol: 'circle',
+    size: 10
+  }
+};
+
+var trace2 = {
+  x: seasonality,
+  y: city,
+  mode: 'markers',
+  name: 'Predicted seasonality (rel. low, medium, high)',
+  marker: {
+    color: 'rgba(204, 204, 204, 0.95)',
+    line: {
+      color: 'rgb(255, 64, 0)',
+      width: 1,
+    },
+    symbol: 'square',
+    size: 10
+  }
+};
+
+var data = [trace1, trace2];
+
+var layout = {
+  title: 'Estimated Lowest Fare and Predicted Seasonality',
+  xaxis: {
+    showgrid: false,
+    showline: true,
+    linecolor: 'rgb(102, 102, 102)',
+    titlefont: {
+      font: {
+        color: 'rgb(204, 204, 204)'
+      }
+    },
+    tickfont: {
+      font: {
+        color: 'rgb(102, 102, 102)'
+      }
+    },
+    autotick: false,
+    dtick: 50,
+    ticks: 'outside',
+    tickcolor: 'rgb(102, 102, 102)'
+  },
+  margin: {
+    l: 140,
+    r: 40,
+    b: 50,
+    t: 80
+  },
+  legend: {
+    font: {
+      size: 10,
+    },
+    yanchor: 'middle',
+    xanchor: 'center'
+  },
+  width: 710,
+  height: 800,
+  paper_bgcolor: 'rgb(249,249,249)',
+  plot_bgcolor: 'rgb  (249,249,249)',
+  hovermode: 'closest'
+};
+
+Plotly.newPlot('myDiv', data, layout);
+
+
+
+// ===================================================================
     Plotly.d3.csv('https://raw.githubusercontent.com/knalavadi/Travel_App/master/templates/flight_info.csv', function(err, rows){
       function unpack(rows, key) {
           return rows.map(function(row) { return row[key]; });
@@ -94,7 +191,7 @@
     }];
 
     var layout = {
-        title: 'Flight Fares out of SFO',
+        title: 'Current Lowest Fares out of SFO',
         showlegend: false,
         geo: {
           scope: 'usa',
@@ -113,14 +210,19 @@
     Plotly.plot(usMap, data, layout, {showLink: false});
 });
 
-    // ===================================================================
+// ===================================================================
 
+
+// toggle for maps 
 jQuery(function () {
     jQuery('#myTab a:last').tab('show')
 })
 
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
 
-        </script>
+</script>
         <form action='/city_event_page' method='POST'>
             <a href="/city_event_page/{{city.destination}}"><button type="button" class="btn btn-default btn-lg btn-block" id="eventButton">check out events in {{ city.destination }}</button>
             {% endif %}
