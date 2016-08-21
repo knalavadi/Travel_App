@@ -1,5 +1,5 @@
 1|SFO|LAX|Los Angeles|2016-09-20|2016-09-30|114|USD|105|buy|65.00|destination_info
-2|SFO|XXX|Honolulu|2016-09-20|2016-09-30|410|USD|379|wait|471.00|destination_info
+2|SFO|HNL|Honolulu|2016-09-20|2016-09-30|410|USD|379|wait|471.00|destination_info
 3|SFO|DEN|Denver|2016-09-20|2016-09-30|95|USD|97|buy|69.00|destination_info
 5|SFO|SEA|Seattle|2016-09-20|2016-09-30|146|USD|113|buy|84.00|destination_info
 4|SFO|JFK|New York|2016-09-20|2016-09-30|301|USD|301|buy|179.00|destination_info
