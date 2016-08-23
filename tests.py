@@ -5,31 +5,33 @@ from model import db, example_data, connect_to_db
 
 
 class CityTests(unittest.TestCase):
-    """Tests for my party site."""
+    """Tests for flight booking site."""
 
     def setUp(self):
         self.client = app.test_client()
         app.config['TESTING'] = True
 
+#tests homepage:
     def test_homepage(self):
         result = self.client.get("/")
         self.assertIn("Where to?:", result.data)
 
+#tests example london city page:
     def test_city_page(self):
-        result = self.client.get("/city_page")
-        self.assertIn(" compare to other popular destintations out of SFO", result.data)
+        result = self.client.post("/city_page",
+                                 data={'city':"London"}, 
+                                 follow_redirects=True)
         self.assertNotIn("events for you", result.data)
 
+#tests example london event page:
     def test_city_event_page(self):
-        result = self.client.post("/city_event_page/Charleston",
-                                  data={'city': "Charleston"},
+        result = self.client.post("/city_event_page/London",
+                                  data={'city': "London"},
                                   follow_redirects=True)
-        self.assertIn("Charleston events for you", result.data)
-        self.assertIn("Whiskey After Dark", result.data)
         self.assertNotIn(" compare to other popular destintations out of SFO", result.data)
 
 
-class PartyTestsDatabase(unittest.TestCase):
+class CityTestsDatabase(unittest.TestCase):
     """Flask tests that use the database."""
 
     def setUp(self):

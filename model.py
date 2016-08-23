@@ -30,11 +30,17 @@ class City(db.Model):
     recommendation = db.Column(db.String(15), nullable=True)
     destination_info = db.Column(db.String(5000), nullable=True )
 
+def example_data():
+    city = City(city_id= 9999, origin_airport="SFO", destination_airport= "LHR", destination = "London", departure_date="2016-09-20", return_date="2016-09-20", lowest_predicted_fares="1000", lowest_fare="1000", recommendation="none", destination_info="example info pass"
+                )
+    db.session.add(city)
+    db.session.commit()
 
     def __repr__(self):
         """Provide helpful representation when printed."""
 
         return "You should %s to book tickets to %s. The lowest predicted fare is $%s, and the lowest available fare is $%s" % (self.recommendation, self.destination, self.lowest_predicted_fares, self.lowest_fare)
+
 
 
 
@@ -72,11 +78,13 @@ class Event(db.Model):
 ##############################################################################
 # Helper functions
 
-def connect_to_db(app):
+
+
+def connect_to_db(app, database_URI='postgresql:///cities'):
     """Connect the database to our Flask app."""
 
     # Configure to use our PostgreSQL database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///cities'
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_URI
     app.config['SQLALCHEMY_ECHO'] = True
     db.app = app
     db.init_app(app)
