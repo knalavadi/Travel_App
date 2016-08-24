@@ -54,7 +54,7 @@ def city_page(destination):
     print destination
     # print destination.events
     # print "DESTINATION event page", destination 
-    flash(destination)
+    # flash(destination)
 
     return render_template("city_event_page.html", events=destination.events, city_event_destination=destination)
 

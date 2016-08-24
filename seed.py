@@ -47,7 +47,7 @@ def load_events():
         row = row.rstrip()
         print row.split("|")
 
-        city_id, event_id, destination, event_date, event_time, event_name, event_location, event_cost, event_theme = row.split("|")
+        city_id, event_id, destination, event_date, event_time, event_name, event_location, event_cost, event_theme, event_description = row.split("|")
 
         event = Event(city_id=city_id,
                     event_id=event_id,
@@ -58,6 +58,7 @@ def load_events():
                     event_location=event_location,
                     event_cost=event_cost,
                     event_theme=event_theme,
+                    event_description=event_description
                     )
 
         # Add to the session 

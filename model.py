@@ -59,7 +59,8 @@ class Event(db.Model):
     event_name = db.Column(db.String(64), nullable=True)   
     event_location = db.Column(db.String(64), nullable=True)   
     event_cost = db.Column(db.String(64), nullable=True)   
-    event_theme = db.Column(db.String(64), nullable=True)       
+    event_theme = db.Column(db.String(64), nullable=True)   
+    event_description = db.Column(db.String(20000), nullable=True)      
 
 
 #     # Defines relationship to cities

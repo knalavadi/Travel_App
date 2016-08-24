@@ -7,10 +7,16 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <style type="text/css">
+      #selectCityRecommendation{
+        text-align: center;
+/*        margin-left: 50%;*/
+      }
+
       #selectedCity{
         margin-left: 5%;
         margin-bottom: 2%;
       }
+
       #eventButton{
         font-size: 1.1em;
       }
@@ -27,7 +33,11 @@
     </style>
 </head>
     <body>
-        {% if city %}
+        {% if city %}        
+        <div class="alert alert-info" role="alert">
+          <p id="selectCityRecommendation">You should {{city.recommendation}} to book tickets to {{city.destination}}. The lowest predicted fare is ${{city.lowest_predicted_fares}}, and the lowest available fare is ${{city.lowest_fare}}</p>
+        </div>
+
         <h4 id="selectedCity">See how {{city.destination }} prices compare to other popular destintations out of SFO</h4>
         <br>
 <div class="container">
@@ -212,22 +222,6 @@ Plotly.newPlot('myDiv', data, layout);
 
 // ===================================================================
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ===================================================================
 // toggle for maps 
 jQuery(function () {
     jQuery('#myTab a:last').tab('show')
@@ -244,5 +238,6 @@ $(document).ready(function(){
             </a>
         </form>
     {% endblock %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     </body>
 </html>
