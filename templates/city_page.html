@@ -9,7 +9,8 @@
     <style type="text/css">
       #selectCityRecommendation{
         text-align: center;
-/*        margin-left: 50%;*/
+        font-size: 1.1em;
+        color: #222222;
       }
 
       #selectedCity{
@@ -40,18 +41,19 @@
 
         <h4 id="selectedCity">See how {{city.destination }} prices compare to other popular destintations out of SFO</h4>
         <br>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-8">
       <ul class="nav nav-tabs" id="myTab">
-        <li class="active"><a data-target="#home" data-toggle="tab">Predicted insights</a></li>
-        <li><a data-target="#profile" data-toggle="tab">Lowest Cost Comparison</a></li>
+        <li class="active"><a data-target="#home" data-toggle="tab" style = "color:#000333;">Predicted insights</a></li>
+        <li><a data-target="#profile" data-toggle="tab" style = "color:#000333;">Lowest Cost Comparison</a></li>
       </ul>
 
       <div class="tab-content">
         <div class="tab-pane active" id="home">
           <div class="container">
-            <a href="#" data-toggle="tooltip" title="Predicted seasonality is based on comparatively low, medium and high traffic for the given destination relative to other times of the year">More Info</a>
+            <a href="#" data-toggle="tooltip" title="Predicted price based of Sambre, lowest flight price powered by google flight. as of Aug 10, 2016">More Info</a>
 
           </div><div id="myDiv"">
         </div></div>
@@ -75,18 +77,19 @@
 <script>
 
 
-var city = ['LA', 'Honolulu', 'Denver', 'Seattle', 'New York', 'Phoenix', 'Miami', 'Portland', 'Las Vegas', 'Chicago', 'San Diego', 'San Antonio', 'Santa Barbara', 'New Orleans', 'Atlanta', 'Charleston', 'Charlotte', 'Washingtion DC', 'Philadelphia', 'Cleveland', 'Baltimore', 'Dallas', 'Austin', 'Boston', 'Houston'];
+var city = ['Washington DC', 'Seattle', 'Santa Barbara','San Diego' ,'San Antonio','Portland' ,'Phoenix','Philadelphia','New York City','New Orleans' ,'Miami','Los Angeles','Las Vegas','Houston','Honolulu','Denver','Dallas','Cleveland' ,'Chicago','Charlotte','Charleston' ,'Boston','Baltimore' ,'Austin','Atlanta'];
 
-var estLowestFlight = ['105', '379', '97', '113', '301', '28', '199', '98', '59', '44', '127', '253', '148', '273', '215', '350', '377', '300', '293', '242', '342', '100', '216', '275', '98'];
+var actLowestFlight = ['209.00','84.00','449.00','74.00','364.00','79.00','64.00','792.00','179.00','176.00','163.00','65.00','52.00','79.00','471.00','69.00','105.00','317.00','54.00','302.00','187.00','189.00','235.00','151.00','186.00'];
 
-var seasonality = ['210', '10', '400', '400', '400', '210', '10', '400', '210', '400', '400', '210','210', '210', '210', '400', '210', '400', '400', '400', '400', '10', '400', '400', '210'];
+var estLowestFare = [
+'300','113','148','127','253','98','28','293','301','273','199','105','59','98','379','97','100','242','44','377','350','275','342','216','215'];
 
 var trace1 = {
   type: 'scatter',
-  x: estLowestFlight,
+  x: actLowestFlight,
   y: city,
   mode: 'markers',
-  name: 'Estimated lowest fare',
+  name: 'Current Lowest Fare',
   marker: {
     color: '(91,192,222)',
     line: {
@@ -99,14 +102,14 @@ var trace1 = {
 };
 
 var trace2 = {
-  x: seasonality,
+  x: estLowestFare ,
   y: city,
   mode: 'markers',
-  name: 'Predicted seasonality (rel. low, medium, high)',
+  name: 'Estimated Lowest Fare',
   marker: {
-    color: 'rgba(204, 204, 204, 0.95)',
+    color: 'rgba(255, 64, 0)',
     line: {
-      color: 'rgb(255, 64, 0)',
+      color: 'rgb(255,167, 0)',
       width: 1,
     },
     symbol: 'square',
@@ -117,7 +120,7 @@ var trace2 = {
 var data = [trace1, trace2];
 
 var layout = {
-  title: 'Estimated Lowest Fare and Predicted Seasonality',
+  title: 'Estimated Lowest Fare and Predicted Lowest Fare',
   xaxis: {
     showgrid: false,
     showline: true,

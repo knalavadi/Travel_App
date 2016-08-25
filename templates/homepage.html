@@ -20,6 +20,14 @@ form {
     text-align: center;
 }
 
+#whereTo{
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+.destination{
+    font-size: 1.1em;
+    color: #000333;
+}
 #disabledInput{
     width: 15%;
 }
@@ -39,18 +47,19 @@ form {
         <br>
     </div>
         <br>
-    <object><iframe src="https://player.vimeo.com/video/29070512?background=1" id="homepageVideo" width="640" height="360" frameborder="0"></iframe></object><br><br>
+    <object><iframe src="https://player.vimeo.com/video/29070512?background=1" id="homepageVideo" width="740" height="417" frameborder="0"></iframe></object><br><br>
 
 
-
+<div class="jumbotron">
 <form action='/city_page' method='POST' class="form-inline" class=homeCitySearch>
     <div class="form-group">
-    <label for="destination" id="whereTo">Where to?:</label> <input list="destination" class="form-group" class="form-control" name="destination" placeholder="city name">
-          <datalist id="destination">
-                <option value="Atlanta" name="destination">
-                <option value="Austin" name="destination">
-                <option value="Baltimore" name="destination">
-                <option value="Boston" name="destination">
+    <label for="destination" id="whereTo">Where to?:</label> 
+    <input list="destination" class="form-group" name="destination" placeholder="city name" style="background-color:white; width:250px; height: 30px;">
+          <datalist class="destination">
+                <option value="Atlanta" name="destination" style="color:gray; font-size:1.1em;">
+                <option value="Austin" name="destination" class="dropdown-item">
+                <option value="Baltimore" name="destination" class="dropdown-item">
+                <option value="Boston" name="destination" class="dropdown-item">
                 <option value="Charleston" name="destination">
                 <option value="Charlotte" name="destination">
                 <option value="Chicago" name="destination">
@@ -74,10 +83,10 @@ form {
                 <option value="Washington DC" name="destination">
           </datalist>
     </div>
-    <input class="form-group" class="form-control" id="disabledInput" type="text" placeholder="Sept 20 - Sept 30, 2016" disabled>
+    <input class="form-group" class="form-control" id="disabledInput" type="text" placeholder="Sept 20 - Sept 30, 2016" disabled style="height: 30px;">
     <input type="submit"  class="btn btn-default">
 </form>
-
+</div>
 
 
 
