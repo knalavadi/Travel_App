@@ -7,6 +7,9 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <style type="text/css">
+    .alert{
+      background-color: orange;
+    }
       #selectCityRecommendation{
         text-align: center;
         font-size: 1.1em;
@@ -35,7 +38,7 @@
 </head>
     <body>
         {% if city %}        
-        <div class="alert alert-info" role="alert">
+        <div class="alert" role="alert">
           <p id="selectCityRecommendation">You should {{city.recommendation}} to book tickets to {{city.destination}}. The lowest predicted fare is ${{city.lowest_predicted_fares}}, and the lowest available fare is ${{city.lowest_fare}}</p>
         </div>
 

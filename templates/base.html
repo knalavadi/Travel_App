@@ -61,6 +61,7 @@ a:hover{
 
 #aboutContentTitle{
   font-color:black;
+  display:inline-block;
 }
 
 #aboutContent{
@@ -104,7 +105,15 @@ a:hover{
               <div id="aboutModal" class="modal">
                 <div class="modal-content">
                 <span class="close">×</span>
-                <div id="item"></div>
+                <h1 id="aboutContentTitle" style = "text-decoration:none;">About Us </h1>
+                <a>
+                <h2><small>Travel app is aimed to give the user transparency in booking flights. The user can easily compare what a flight <strong>should</strong> cost to what it <strong>does</strong> cost, and make the decision to book a flight accordingly.</small></h2>
+                <br>
+                <a id="howItWorks">How it works:</a><br>
+                <a id="aboutContent">Travel App uses <a href="https://developer.sabre.com/io-docs" id="aboutContent">Sambre API</a>  <a id="aboutContent">to get predicted flight prices and compares it to the lowest available flight on <a href="https://developers.google.com/qpx-express/" id="aboutContent"> Google flights </a>. <a id="aboutContent"> Event information is provided by <a href="http://developer.eventbrite.com/" id="aboutContent">Eventbrite </a>. <a id="aboutContent"> All data is saved locally, therefore flight recomendations are based off the travel period Sept 20 - Sept 30 with the booking date as August 10. Event data is based off what was available via <a href="http://developer.eventbrite.com/" id="aboutContent">Eventbrite </a> <a id="aboutContent">August 10, 2016. </a>
+              </div>
+              </a>
+            </a>
                 <script>                
                 var width = 150,
                     height = 100;
@@ -113,7 +122,7 @@ a:hover{
                     .domain([0, 1, 2])
                     .rangePoints([0, width], 1);
 
-                var svg = d3.select("#item").append("svg")
+                var svg = d3.select("#aboutContentTitle").append("svg")
                     .attr("width", width)
                     .attr("height", height);
 
@@ -123,17 +132,16 @@ a:hover{
                     .attr("r", height / 4)
                     .attr("cx", x)
                     .attr("cy", height / 2);
-// #svg create circle
 
                 setTimeout(function() {
                   circle = circle.data([1, 2], function(d) { return d; });
 
-                  // Since this is created before enter.append, it only applies to updating nodes.
+                  // orange circle, followed by blue circle
                   circle.transition()
                       .duration(750)
                       .attr("r", height / 3)
                       .style("fill", "rgb(255, 167, 0)");
-// #append ornage circle
+
                   circle.enter().append("circle")
                       .attr("r", height / 4)
                       .attr("cx", x)
@@ -143,23 +151,13 @@ a:hover{
 
                   circle.exit().transition()
                       .duration(750)
-                      .style("fill", "black")
+                      .style("fill", "white")
                       .attr("r", 1e-6)
                       .remove();
 
                 }, 2000);
 
                 </script>
-                <a>
-                <h2 id="aboutContentTitle" style = "text-decoration:none;">About Us</h2>
-                <h2><small>Travel app is aimed to give the user transparency in booking flights. The user can easily compare what a flight <strong>should</strong> cost to what it <strong>does</strong> cost, and make the decision to book a flight accordingly.</small></h2>
-                <br>
-                <a id="howItWorks">How it works:</a><br>
-                <a id="aboutContent">Travel App uses <a href="https://developer.sabre.com/io-docs" id="aboutContent">Sambre API</a>  <a id="aboutContent">to get predicted flight prices and compares it to the lowest available flight on <a href="https://developers.google.com/qpx-express/" id="aboutContent"> Google flights </a>. <a id="aboutContent"> Event information is provided by <a href="http://developer.eventbrite.com/" id="aboutContent">Eventbrite </a>. <a id="aboutContent"> All data is saved locally, therefore flight recomendations are based off the travel period Sept 20 - Sept 30 with the booking date as August 10. Event data is based off what was available via <a href="http://developer.eventbrite.com/" id="aboutContent">Eventbrite </a> <a id="aboutContent">August 10, 2016. </a>
-              </div>
-              </a>
-            </a>
-
         </div>
     </div>
 </nav>
