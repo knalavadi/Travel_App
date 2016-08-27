@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<style>
+    .title{
+        margin-left:2%;
+    }
+    label{
+        margin-left:5px;
+    }
+
+    .form-group{
+        margin-left:5px;
+
+    }
+
+    a {
+        margin-left:5px;
+    }
+
+    #cityScrollBox{
+        margin-left:10px;
+    }
+</style>
+</head>
+<body>
+
+
+
+    
+<p>
+<h2 class="title">RESTful API using Python and Flask</h2>
+<p class="title">The REST APIs provide programmatic access to read Travel App's flight recommendation data. Responses are redirected to a new page and are available in JSON.
+</p>
+</p>    
+
+
+<div class="jumbotron">
+<label for="destination">Which City's information do you want?:</label> <br>
+
+    <input class="form-group" class="form-control" id="disabledInput" type="text" placeholder="/api/v1.0/cities/city.city_id" disabled style="height: 30px; width:250px;">
+    <input class="form-group" class="form-control" id="disabledInput" type="text" placeholder="GET" disabled style="height: 30px;">
+<div id = "cityScrollBox" style="height:200px;width:350px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+<a  href="/api/v1.0/cities/1">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/2">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/3">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/4">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/5">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/6">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/7">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/8">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/9">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/10">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/11">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/12">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/13">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/14">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/15">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/16">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/17">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/18">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/19">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/20">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/21">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/22">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/23">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/24">Los Angeles</a><br>
+<a  href="/api/v1.0/cities/25">Los Angeles</a><br>
+</div> 
+
+
+
+</div>      
+            
+    <form action='/api/v1.0/cities' method='POST' class="form-inline">
+        <input type="submit" value="get all cities" class="btn btn-default">
+    </form>
+{% endblock %}
+
+</div>
+</body>
+</html>
