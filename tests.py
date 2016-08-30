@@ -4,6 +4,7 @@ from server import app
 from model import db, example_data, connect_to_db
 
 
+
 class CityTests(unittest.TestCase):
     """Tests for flight booking site."""
 
@@ -29,6 +30,22 @@ class CityTests(unittest.TestCase):
                                   data={'city': "London"},
                                   follow_redirects=True)
         self.assertNotIn(" compare to other popular destintations out of SFO", result.data)
+
+#tests api page
+    def test_api(self):
+        result = self.client.get("/api")
+        self.assertIn("RESTful API using Python and Flask", result.data)
+
+#tests example london json file:
+    def test_api_city(self):
+        result = self.client.post("api/v1.0/cities/<int:city_id>",
+                                  data={'city': "London"},
+                                  follow_redirects=True)
+        self.assertNotIn(" compare to other popular destintations out of SFO", result.data)
+
+
+
+
 
 
 class CityTestsDatabase(unittest.TestCase):
