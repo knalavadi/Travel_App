@@ -5,33 +5,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Force Layout with labels on edges</title>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<style type="text/css">
+        .title{
+            margin-left:2%;
+        }
 
-<style>
-    .title{
-        margin-left:2%;
-    }
-    label{
-        margin-left:5px;
-    }
+        .jumbotron{
+            background-color:white;
+        }
 
-    .form-group{
-        margin-left:5px;
+        label{
+            margin-left:5px;
+        }
+        #destinationInfo{
+            margin-left: 20px;
+        }
+        /*        input boxes*/
+        .form-group1{
+            margin-left:20px;
 
-    }
+        }
+        /*#text inside scroll box*/
+        a {
+            margin-left:5px;
+        }
 
-    a {
-        margin-left:5px;
-    }
+        #cityScrollBox{
+            margin-left:20px;
+            background-color:white;
+        }
+        /*d3 */
+        .link {
+          stroke: #ccc;
+        }
 
-    #cityScrollBox{
-        margin-left:10px;
-    }
-</style>
+        .node text {
+          pointer-events: none;
+          font: 10px sans-serif;
+        }
+
+        .getAll{
+            background-color:white;
+            height:25px;
+            margin-left: 40px;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -39,54 +61,247 @@
 
     
 <p>
-<h2 class="title">RESTful API using Python and Flask</h2>
-<p class="title">The REST APIs provide programmatic access to read Travel App's flight recommendation data. Responses are redirected to a new page and are available in JSON.
-</p>
+    <h2 class="title">RESTful API using Python and Flask</h2>
+    <p class="title">The REST APIs provide programmatic access to read Travel App's flight recommendation data. Responses are redirected to a new page and are available in JSON.</p>
 </p>    
 
 
 <div class="jumbotron">
-<label for="destination">Which City's information do you want?:</label> <br>
+<div class="col-sm-6">
+        <label for="destination" id="destinationInfo">Which City's information do you want?:</label> <br>
 
-    <input class="form-group" class="form-control" id="disabledInput" type="text" placeholder="/api/v1.0/cities/city.city_id" disabled style="height: 30px; width:250px;">
-    <input class="form-group" class="form-control" id="disabledInput" type="text" placeholder="GET" disabled style="height: 30px;">
-<div id = "cityScrollBox" style="height:200px;width:350px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
-<a  href="/api/v1.0/cities/1">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/2">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/3">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/4">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/5">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/6">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/7">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/8">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/9">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/10">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/11">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/12">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/13">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/14">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/15">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/16">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/17">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/18">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/19">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/20">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/21">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/22">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/23">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/24">Los Angeles</a><br>
-<a  href="/api/v1.0/cities/25">Los Angeles</a><br>
-</div> 
+            <input class="form-group1" class="form-control" id="disabledInput" type="text" placeholder="/api/v1.0/cities/city.city_id" disabled style="height: 30px; width:250px;"></input>
+            <input class="form-group" class = "Get" class="form-control" id="disabledInput" type="text" placeholder="GET" disabled style="height: 30px;"></input>
+            <div id = "cityScrollBox" style="height:400px;width:375px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
 
-
-
-</div>      
-            
-    <form action='/api/v1.0/cities' method='POST' class="form-inline">
-        <input type="submit" value="get all cities" class="btn btn-default">
-    </form>
-{% endblock %}
-
+                <a  href="/api/v1.0/cities/15">Atlanta</a><br>
+                <a  href="/api/v1.0/cities/23">Austin</a><br>
+                <a  href="/api/v1.0/cities/21">Baltimore</a><br>
+                <a  href="/api/v1.0/cities/24">Boston</a><br>
+                <a  href="/api/v1.0/cities/16">Charleston</a><br>
+                <a  href="/api/v1.0/cities/17">Charlotte</a><br>
+                <a  href="/api/v1.0/cities/10">Chicago</a><br>
+                <a  href="/api/v1.0/cities/20">Cleveland</a><br>
+                <a  href="/api/v1.0/cities/22">Dallas</a><br>
+                <a  href="/api/v1.0/cities/3">Denver</a><br>
+                <a  href="/api/v1.0/cities/2">Honolulu</a><br>
+                <a  href="/api/v1.0/cities/25">Houston</a><br>
+                <a  href="/api/v1.0/cities/9">Las Vegas</a><br>
+                <a  href="/api/v1.0/cities/1">Los Angeles</a><br>
+                <a  href="/api/v1.0/cities/7">Miami</a><br>
+                <a  href="/api/v1.0/cities/14">New Orleans</a><br>
+                <a  href="/api/v1.0/cities/5">New York City</a><br>
+                <a  href="/api/v1.0/cities/19">Philadelphia</a><br>
+                <a  href="/api/v1.0/cities/6">Phoenix</a><br>
+                <a  href="/api/v1.0/cities/8">Portland</a><br>
+                <a  href="/api/v1.0/cities/12">San Antonio</a><br>
+                <a  href="/api/v1.0/cities/11">San Diego</a><br>
+                <a  href="/api/v1.0/cities/13">Santa Barbara</a><br>
+                <a  href="/api/v1.0/cities/4">Seattle</a><br>
+                <a  href="/api/v1.0/cities/18">Washington DC</a><br>
+            </div> 
 </div>
+<div class="col-sm-6">    
+    <div id=sfoD3></div>    
+</div>    
+
+    <form action='/api/v1.0/cities' method='POST' class="form-inline">
+        <input type="submit" value="get all cities" class="getAll">
+
+    </form>
+</div>   
+
+<!-- ==================== D3 javascript code ====================== -->
+
+    <script type="text/javascript">
+
+        var w = 500;
+        var h = 500;
+        var linkDistance=150;
+
+        // color controller from d3 library
+        var colors = d3.scale.category10();
+
+        var dataset = {
+        nodes: [
+        {name: "San Francisco"},
+        {name: "ATL"},
+        {name: "AUS"},
+        {name: "BWI"},
+        {name: "BOS"},
+        {name: "CHS"},
+        {name: "CLT"},
+        {name: "ORD"},
+        {name: "CLE"},
+        {name: "DFW"},
+        {name: "DEN"},
+        {name: "HNL"},
+        {name: "IAH"},
+        {name: "LAS"},
+        {name: "LAX"},
+        {name: "MIA"},
+        {name: "MSY"},
+        {name: "JFK"},
+        {name: "PHL"},
+        {name: "PHX"},
+        {name: "PDX"},
+        {name: "SAT"},
+        {name: "SAN"},
+        {name: "SBA"},
+        {name: "SEA"},
+        {name: "IAD"},
+        ],
+        edges: [
+        {source: 0, target: 1},
+        {source: 0, target: 2},
+        {source: 0, target: 3},
+        {source: 0, target: 4},
+        {source: 0, target: 5},
+        {source: 0, target: 6},
+        {source: 0, target: 7},
+        {source: 0, target: 8},
+        {source: 0, target: 9},
+        {source: 0, target: 10},
+        {source: 0, target: 11},
+        {source: 0, target: 12},
+        {source: 0, target: 13},
+        {source: 0, target: 14},
+        {source: 0, target: 15},
+        {source: 0, target: 16},
+        {source: 0, target: 17},
+        {source: 0, target: 18},
+        {source: 0, target: 19},
+        {source: 0, target: 20},
+        {source: 0, target: 21},
+        {source: 0, target: 22},
+        {source: 0, target: 23},
+        {source: 0, target: 24},
+        {source: 0, target: 25},
+        ]
+        };
+
+    // marker attributes 
+        var svg = d3.select("#sfoD3").append("svg").attr({"width":w,"height":h});
+
+        var force = d3.layout.force()
+            .nodes(dataset.nodes)
+            .links(dataset.edges)
+            .size([w,h])
+            .linkDistance([linkDistance])
+            .charge([-500])
+            .theta(0.1)
+            .gravity(0.05)
+            .start();
+
+    // line pointers for each airport
+        var edges = svg.selectAll("line")
+          .data(dataset.edges)
+          .enter()
+          .append("line")
+          .attr("id",function(d,i) {return 'edge'+i})
+          .attr('marker-end','url(#arrowhead)')
+          .style("stroke","#ccc")
+          .style("pointer-events", "none");
+
+    // draws circles        
+        var nodes = svg.selectAll("circle")
+          .data(dataset.nodes)
+          .enter()
+          .append("circle")
+          .attr({"r":15})
+          .style("fill",function(d,i){return colors(i);})
+          .call(force.drag)
+
+    // assigns airport names to each circle
+        var nodelabels = svg.selectAll(".nodelabel") 
+           .data(dataset.nodes)
+           .enter()
+           .append("text")
+           .attr({"x":function(d){return d.x;},
+                  "y":function(d){return d.y;},
+                  "class":"nodelabel",
+                  "stroke":"black"})
+           .text(function(d){return d.name;});
+
+    // css style for lines
+        var edgepaths = svg.selectAll(".edgepath")
+            .data(dataset.edges)
+            .enter()
+            .append('path')
+            .attr({'d': function(d) {return 'M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y},
+                   'class':'edgepath',
+                   'fill-opacity':0,
+                   'stroke-opacity':0,
+                   'fill':'blue',
+                   'stroke':'red',
+                   'id':function(d,i) {return 'edgepath'+i}})
+            .style("pointer-events", "none");
+
+    // css style for airport text
+        var edgelabels = svg.selectAll(".edgelabel")
+            .data(dataset.edges)
+            .enter()
+            .append('text')
+            .style("pointer-events", "none")
+            .attr({'class':'edgelabel',
+                   'id':function(d,i){return 'edgelabel'+i},
+                   'dx':80,
+                   'dy':0,
+                   'font-size':10,
+                   'fill':'#aaa'});
+
+    // arrow head 
+        svg.append('defs').append('marker')
+            .attr({'id':'arrowhead',
+                   'viewBox':'-0 -5 10 10',
+                   'refX':25,
+                   'refY':0,
+                   'markerUnits':'strokeWidth',
+                   'orient':'auto',
+                   'markerWidth':10,
+                   'markerHeight':10,
+                   'xoverflow':'visible'})
+            .append('svg:path')
+                .attr('d', 'M 0,-5 L 10 ,0 L 0,5')
+                .attr('fill', '#ccc')
+                .attr('stroke','#ccc');
+         
+    // animation functions
+        force.on("tick", function(){
+
+            edges.attr({"x1": function(d){return d.source.x;},
+                        "y1": function(d){return d.source.y;},
+                        "x2": function(d){return d.target.x;},
+                        "y2": function(d){return d.target.y;}
+            });
+
+            nodes.attr({"cx":function(d){return d.x;},
+                        "cy":function(d){return d.y;}
+            });
+
+            nodelabels.attr("x", function(d) { return d.x; }) 
+                      .attr("y", function(d) { return d.y; });
+
+            edgepaths.attr('d', function(d) { var path='M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y;
+                                               //console.log(d)
+                                               return path});       
+
+            edgelabels.attr('transform',function(d,i){
+                if (d.target.x<d.source.x){
+                    bbox = this.getBBox();
+                    rx = bbox.x+bbox.width/2;
+                    ry = bbox.y+bbox.height/2;
+                    return 'rotate(180 '+rx+' '+ry+')';
+                    }
+                else {
+                    return 'rotate(0)';
+                    }
+            });
+        });
+
+    </script>
+
+
+{% endblock %}
 </body>
 </html>

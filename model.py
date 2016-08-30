@@ -30,6 +30,7 @@ class City(db.Model):
     recommendation = db.Column(db.String(15), nullable=True)
     destination_info = db.Column(db.String(5000), nullable=True )
 
+# example data for tests
 def example_data():
     city = City(city_id= 9999, origin_airport="SFO", destination_airport= "LHR", destination = "London", departure_date="2016-09-20", return_date="2016-09-20", lowest_predicted_fares="1000", lowest_fare="1000", recommendation="none", destination_info="example info pass"
                 )

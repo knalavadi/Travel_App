@@ -4,6 +4,7 @@ from jinja2 import StrictUndefined
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, City
+import coverage
 # from functools import wrap 
 
 app = Flask(__name__)
@@ -57,176 +58,176 @@ cities = [
     {
         'id': 1,
         'name': u'Los Angeles',
-        'recomendation': u'Milk, Cheese, Pizza, Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$105',
         'lowest fare': '$65'
     },
         {
         'id': 2,
         'name': u'Honolulu',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Wait', 
+        'estimated fare': '$379',
         'lowest fare': '$471'
     },
     {
         'id': 3,
         'name': u'Denver',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$97',
         'lowest fare': '$69'
     },
         {
         'id': 4,
         'name': u'Seattle',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$113',
         'lowest fare': '$84'
     },
         {
         'id': 5,
         'name': u'New York City',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$301',
         'lowest fare': '$179'
     },
         {
         'id': 6,
         'name': u'Phoenix',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Wait', 
+        'estimated fare': '$28',
         'lowest fare': '$64'
     },
         {
         'id': 7,
         'name': u'Miami',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$199',
         'lowest fare': '$163'
     },
         {
         'id': 8,
         'name': u'Portland',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$98',
         'lowest fare': '$79'
     },
         {
         'id': 9,
         'name': u'Las Vegas',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$59',
         'lowest fare': '$52'
     },
         {
         'id': 10,
         'name': u'Chicago',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Wait', 
+        'estimated fare': '$44',
         'lowest fare': '$54'
     },
         {
         'id': 11,
         'name': u'San Diego',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$127',
         'lowest fare': '$74'
     },
         {
         'id': 12,
         'name': u'San Antonio',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Wait', 
+        'estimated fare': '$253',
         'lowest fare': '$364'
     },
         {
         'id': 13,
         'name': u'Santa Barbara',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Wait', 
+        'estimated fare': '$148',
         'lowest fare': '$449'
     },
         {
         'id': 14,
         'name': u'New Orleans',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$273',
         'lowest fare': '$176'
     },
         {
         'id': 15,
         'name': u'Atlanta',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$215',
         'lowest fare': '$186'
     },
         {
         'id': 16,
         'name': u'Charleston',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$350',
         'lowest fare': '$187'
     },
         {
         'id': 17,
         'name': u'Charlotte',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$377',
         'lowest fare': '$302'
     },
         {
         'id': 18,
         'name': u'Washingotn DC',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$300',
         'lowest fare': '$209'
     },
         {
         'id': 19,
         'name': u'Philadelphia',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Wait', 
+        'estimated fare': '$293',
         'lowest fare': '$792'
     },
         {
         'id': 20,
         'name': u'Cleveland',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Wait', 
+        'estimated fare': '$242',
         'lowest fare': '$317'
     },
         {
         'id': 21,
         'name': u'Baltimore',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$342',
         'lowest fare': '$235'
     },
         {
         'id': 22,
         'name': u'Dallas',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Wait', 
+        'estimated fare': '$100',
         'lowest fare': '$105'
     },
         {
         'id': 23,
         'name': u'Austin',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Buy', 
+        'estimated fare': '$216',
         'lowest fare': '$151'
     },
         {
         'id': 24,
         'name': u'Boston',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'Wait', 
+        'estimated fare': '$275',
         'lowest fare': '$189'
     },
         {
         'id': 25,
         'name': u'Houston',
-        'recomendation': u'Milk,  Fruit, Tylenol', 
-        'estimated fare': '$',
+        'recomendation': u'', 
+        'estimated fare': '$98',
         'lowest fare': '$79'
     },
 ]
@@ -245,10 +246,14 @@ def get_task(city_id):
     return jsonify({'city': city[0]})
 
 
+@app.route('/testing')
+def testing_page():
+    return render_template("index.html")
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
+
+# @app.errorhandler(404)
+# def page_not_found(e):
+#     return render_template('404.html'), 404
 
 #  =========================================
 if __name__ == "__main__":
