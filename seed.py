@@ -1,4 +1,4 @@
-"""Utility file to seed ratings database from city data in flight_data and event_data/"""
+"""Utility file to seed cities database from flight_data and event_data/"""
 
 import datetime
 
