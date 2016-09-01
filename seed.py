@@ -8,10 +8,7 @@ from server import app
 
 
 def load_cities():
-    """Load users from u.user into database.
-    >>> load_cities()
-    City
-"""
+    """Load users from u.user into database."""
 
     print "City"
 
