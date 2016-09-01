@@ -2,11 +2,11 @@
 
 Travel app is aimed to give the user transparency in booking flights.  The user can choose a popular destination and compare what the flight costs to what it should cost. The user can also visually compare other popular cities' flight prices and recommendations. From there, the user can see local events for their selected city and notify themselves or their friends event information directly from the app . Travel App also provides a RESTful API for its' flight recommendations in JSON.  
 
-![homepage](/static/apiPage.jpg?raw=true "Optional Title")
+![homepage](/static/homepage.jpg?raw=true "Optional Title")
 
-![citypage](/static/apiPage.jpg?raw=true "Optional Title")
+![citypage](/static/citypage.jpg?raw=true "Optional Title")
 
-![Eventpage](/static/apiPage.jpg?raw=true"Optional Title")
+![Eventpage](/static/eventPage.jpg?raw=true"Optional Title")
 
 ![Api](/static/apiPage.jpg?raw=true "Optional Title")
 
