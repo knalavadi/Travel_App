@@ -1,4 +1,4 @@
-"""Models and database functions for Ratings project."""
+"""Models and database functions for Travel App project."""
 import heapq
 import time
 from flask_sqlalchemy import SQLAlchemy
