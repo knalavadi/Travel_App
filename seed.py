@@ -1,4 +1,4 @@
-"""Utility file to seed ratings database from MovieLens data in seed_data/"""
+"""Utility file to seed ratings database from city data in flight_data and event_data/"""
 
 import datetime
 
@@ -8,7 +8,10 @@ from server import app
 
 
 def load_cities():
-    """Load users from u.user into database."""
+    """Load users from u.user into database.
+    >>> load_cities()
+    City
+"""
 
     print "City"
 

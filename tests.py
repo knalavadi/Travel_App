@@ -51,8 +51,6 @@ class CityTests(unittest.TestCase):
 
 
 
-
-
 class CityTestsDatabase(unittest.TestCase):
     """Flask tests that use the database."""
 
