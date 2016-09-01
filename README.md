@@ -30,6 +30,6 @@ Testing does not cover querying the database, hence the low percentage.
 ![coverageHTML](/static/coverage.jpg?raw=true "Testing Coverage")
 
 ## Tech Stack
-Python, Javascript, Jquery, Jinja, SQL, SQLAlchemy, D3, HTML, CSS, Coverage 
+Python, Javascript, JQuery, Jinja, SQL, SQLAlchemy, D3, HTML, CSS, Coverage 
 
 
