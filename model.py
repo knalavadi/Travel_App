@@ -46,7 +46,7 @@ def example_data():
 
 
 
-# replace to events 
+
 class Event(db.Model):
 #     """Event info in cities."""
 
@@ -79,7 +79,6 @@ class Event(db.Model):
 
 ##############################################################################
 # Helper functions
-
 
 
 def connect_to_db(app, database_URI='postgresql:///cities'):
