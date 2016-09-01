@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, flash, redirect, session, jso
 from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, City
 import coverage
+import doctest
 # from functools import wrap 
 
 app = Flask(__name__)
@@ -22,8 +23,6 @@ def index():
     return render_template("homepage.html")
 
 
-
-
 # ==============================city page================
 
 @app.route('/city_page', methods=['GET', 'POST'])
@@ -31,25 +30,21 @@ def city():
     # destination = get key from get request
     destination = request.form['destination']
     city = City.query.filter_by(destination=destination).first()
-
     return render_template("city_page.html", city=city)
-
-
 
 
 # ==============================city event page===========
 @app.route('/city_event_page/<destination>', methods=['GET'])
 def city_page(destination):
-
+    """ event page for selected city"""
     destination = City.query.filter_by(destination=destination).first()
-    print destination
-
     return render_template("city_event_page.html", events=destination.events, city_event_destination=destination)
 
 
 # ==============================API Routes=========================================
 @app.route('/api', methods=['GET', 'POST'])
 def api_page():
+    """api page, allows user to make GET request, renders information in JSON format """
     return render_template("api.html")
 
 
@@ -234,26 +229,21 @@ cities = [
 
 @app.route('/api/v1.0/cities', methods=['GET', 'POST'])
 def get_tasks():
+    """ route for api call to all cities"""
     return jsonify({'cities': cities})
-
 
 
 @app.route('/api/v1.0/cities/<int:city_id>', methods=['GET', 'POST'])
 def get_task(city_id):
+    """ route for api call to selected cities"""
     city = [city for city in cities if city['id'] == city_id]
-    if len(city) == 0:
-        abort(404)
     return jsonify({'city': city[0]})
-
 
 @app.route('/testing')
 def testing_page():
+    """ testing page"""
     return render_template("index.html")
 
-
-# @app.errorhandler(404)
-# def page_not_found(e):
-#     return render_template('404.html'), 404
 
 #  =========================================
 if __name__ == "__main__":

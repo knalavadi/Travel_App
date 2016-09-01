@@ -38,11 +38,16 @@ class CityTests(unittest.TestCase):
 
 #tests example london json file:
     def test_api_city(self):
-        result = self.client.post("api/v1.0/cities/<int:city_id>",
+        result = self.client.get("api/v1.0/cities/<int:city_id>",
                                   data={'city': "London"},
                                   follow_redirects=True)
         self.assertNotIn(" compare to other popular destintations out of SFO", result.data)
 
+
+#tests all cities api json file:
+    def test_api_all_cities(self):
+        result = self.client.get("/api/v1.0/cities")
+        self.assertIn('estimated fare',result.data)    
 
 
 
