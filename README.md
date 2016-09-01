@@ -23,7 +23,7 @@ Data was saved locally to prevent API call expenses, and improve runtime.
 
 ## Tests
 
-Tests for Travel App are located in tests.py . Travel App offers 56% test coverage through unittests. Testing covers assertions on all pages on Travel App, and ensures that when a user selects a city the correct city information is deisplayed in flight recoemndations and event infomation 
+Tests for Travel App are located in tests.py . Travel App offers 56% test coverage through unittests. Testing covers assertions on all pages on Travel App, and ensures that when a user selects a city the correct city information is displayed in flight recoemndations and event infomation 
 
 Testing does not cover querying the database, hence the low percentage.
 
