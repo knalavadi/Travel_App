@@ -1,4 +1,4 @@
-"""Models and database functions for Travel App project."""
+"""Models and database functions for Flightplan - Travel App project."""
 import heapq
 import time
 from flask_sqlalchemy import SQLAlchemy
