@@ -13,6 +13,7 @@ City page map view:
 Events for city: 
 ![Eventpage](/static/eventPage.jpg?raw=true"Event Page")
 
+
 RESTful api page:
 ![Api](/static/api.jpg?raw=true "RESTful API")
 
