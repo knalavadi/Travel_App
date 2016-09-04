@@ -5,12 +5,13 @@ Travel app is a Python based Flask app aimed to give the user transparency in bo
 ![homepage](/static/homepage.jpg?raw=true "Homepage")
 
 ![citypage](/static/cityPageComparison.jpg?raw=true "City Page for Selected City")
+
 ![citypage](/static/cityPageMapview.jpg?raw=true "City Page for Selected City")
 
 ![Eventpage](/static/eventPage.jpg?raw=true"Event Page")
 
 ![Api](/static/api.jpg?raw=true "RESTful API")
- ![Api](/static/json.jpg?raw=true "RESTful API")
+
 
 
 ## Installation
