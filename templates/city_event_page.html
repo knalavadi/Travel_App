@@ -5,12 +5,25 @@
 <html>
 <head>
 	<title>Event Page</title>
+<!--     for email  -->
     <script type="text/javascript"<a onclick="javascript:window.location='mailto:?subject=Message from '+document.getElementById('address').value+'&body='+document.getElementById('message').value">Submit</a></script>
+    <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie" rel="stylesheet">
+
+    <style>
+    #eventsForYou{
+
+        font-family: 'Reenie Beanie', cursive;
+        margin-left:5px;
+        font-size: 1em;
+    }
+    
+    </style>
 </head>
+
 <body>
 <img src="http://www.pasands.com/content/dam/bethlehem/pasands/en/main/home/nightlife/event-center/eventcenter_banner.jpg" style="width:90%; margin-left:5%;">
             {% if city_event_destination %}
-                <h1 style="margin-left:5%;">{{ city_event_destination.destination }} <small>events for you</small></h1>
+                <h1 style="margin-left:5%;">{{ city_event_destination.destination }} <small id="eventsForYou">events for you</small></h1>
             {% endif %}
 
 <div class="container">
@@ -20,7 +33,6 @@
             <div class="row" style="margin-top:5%">
                     <div class="col-xs-12 col-sm-6 col-md-8">
                     <h3 id="eventName">{{ event.event_name }} </h3>
-              <!--           <h3 id="eventName">{{ event.event_name }} </h3><a href="mailto:?subject={{event.event_name}}&body=Check%20out%20the%20{{event.event_name}}%20at%20the%20{{event.event_location}}%20on%20{{ event.event_date }}%20at%20{{ event.event_time }}" class="button">Email this event</a> -->
 
                         <div class="container">
                           <div class="row">

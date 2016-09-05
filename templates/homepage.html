@@ -6,9 +6,21 @@
 <html>
 <head>
     <title>Flightplan Travel app</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie" rel="stylesheet">
 <style>
 #homepage-block{
     margin-left: 5%;
+}
+#homepage-title-small{
+    font-family: 'Reenie Beanie', cursive;
+    margin-left:5px;
+    font-size: 1em;
+}
+
+#homepageGreeting{
+    text-align: center;
+    
 }
 
 object{
@@ -32,17 +44,17 @@ form {
     width: 15%;
 }
 
-#homepageSubmit {
-    width: 10%;
+#homepageSubmit{
+    background-color:orange;
+    color:white;
+    width:10%;
 }
-
-
 
 </style>
 </head>
 <body>
     <div id="homepage-block">
-        <h1 id="homepage-title">Flightplan <small>travel app</small></h1>
+        <h1 id="homepage-title">Flightplan <small id="homepage-title-small">travel app</small></h1>
         <p style="font-style: italic;">discover destinations from san francisco, california</p>
         <br>
     </div>
@@ -51,6 +63,7 @@ form {
 
 
 <div class="jumbotron">
+<p id="homepageGreeting"> Search for the best deals out of SFO</p>
 <form action='/city_page' method='POST' class="form-inline" class=homeCitySearch>
     <div class="form-group">
     <label for="destination" id="whereTo">Where to?:</label> 
@@ -84,7 +97,7 @@ form {
           </datalist>
     </div>
     <input class="form-group" class="form-control" id="disabledInput" type="text" placeholder="Sept 20 - Sept 30, 2016" disabled style="height: 30px;">
-    <input type="submit"  class="btn btn-default">
+    <input type="submit" id="homepageSubmit" class="btn btn-default">
 </form>
 </div>
 

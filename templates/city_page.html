@@ -12,7 +12,7 @@
     }
       #selectCityRecommendation{
         text-align: center;
-        font-size: 1.1em;
+        font-size: 1.2em;
         color: #222222;
       }
 
@@ -44,6 +44,7 @@
     </style>
 </head>
     <body>
+    <br>
         {% if city %}        
         <div class="alert" role="alert">
           <p id="selectCityRecommendation">You should {{city.recommendation}} to book tickets to {{city.destination}}. The lowest predicted fare is ${{city.lowest_predicted_fares}}, and the lowest available fare is ${{city.lowest_fare}}</p>
@@ -57,8 +58,8 @@
   <div class="row">
     <div class="col-sm-8">
       <ul class="nav nav-tabs" >
-        <li class="active" ><a data-target="#home" data-toggle="tab" style = "color:#000333;">Predicted insights</a></li>
-        <li><a data-target="#profile" data-toggle="tab" id="thisTab" style = "color:#000333;">Lowest Cost Comparison</a></li>
+        <li class="active" ><a data-target="#home" data-toggle="tab" id="comparisonTab" style = "color:#000333;">Predicted insights</a></li>
+        <li><a data-target="#profile" data-toggle="tab" id="mapViewTab" style = "color:#000333;">Lowest Cost Comparison</a></li>
       </ul>
 
       <div class="tab-content">
@@ -251,6 +252,8 @@ $(document).ready(function(){
 });
 
 </script>
+<br><br>
+<br><br>
 
 <!-- form for event page -->
         <form action='/city_event_page' method='POST'>
