@@ -3,7 +3,7 @@
 Flightplan is a Python based Flask app aimed to give the user transparency in booking flights.  The user can choose a popular destination and compare the lowest flight fare to its actual definitve worth. The user can also visually compare other popular cities' flight prices and recommendations. From there, the user can see local events for their selected city and notify themselves or their friends event information directly from the app. Flightplan also provides a RESTful API for its' flight recommendations in JSON.  
 
 
-[!](http://recordit.co/fh5bMW7euu.gif)
+[!](demo.gif)
 
 
 ## Installation
