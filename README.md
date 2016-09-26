@@ -14,7 +14,7 @@ Flightplan requires a requirements.txt file installation. Flightplan runs throug
 
 ## API Reference
 
-Flightplan runs on a local database. Estimated flight costs and flight booking recommendations are provided by Sambre Api (https://developer.sabre.com/io-docs). Lowest fare for flights is provided by QPX (Google Flights API). Since data is saved locally, Flightplan's flight recommendations are based on the departure date Sept 20, 2016 with the booking date as August 10, 2016. 
+Flightplan runs on a Postgres database. Estimated flight costs and flight booking recommendations are provided by Sambre Api (https://developer.sabre.com/io-docs). Lowest fare for flights is provided by QPX (Google Flights API). Since data is saved locally, Flightplan's flight recommendations are based on the departure date Sept 20, 2016 with the booking date as August 10, 2016. 
 
 Data was saved locally to prevent API call expenses, and improve runtime. 
 
